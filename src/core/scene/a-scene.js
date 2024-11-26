@@ -229,7 +229,7 @@ module.exports.AScene = registerElement('a-scene', {
             if (this.xrSession) {
               this.xrSession.removeEventListener('end', this.exitVRBound);
             }
-            navigator.xr.requestSession(useAR ? 'immersive-ar' : 'immersive-vr', {
+            return navigator.xr.requestSession(useAR ? 'immersive-ar' : 'immersive-vr', {
               requiredFeatures: ['local-floor'],
               optionalFeatures: ['bounded-floor']
             }).then(function requestSuccess (xrSession) {
@@ -261,7 +261,7 @@ module.exports.AScene = registerElement('a-scene', {
               attributes: presentationAttributes
             }]).then(enterVRSuccess, enterVRFailure);
           }
-          return Promise.resolve();
+          // return Promise.resolve();
         }
 
         // No VR.
